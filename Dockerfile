@@ -5,6 +5,7 @@ WORKDIR /projects
 
 # Copy the content of the local src directory to the working directory
 COPY . .
+COPY LICENSE /licenses/
 
 # Specify the command to run on container start
 CMD [ "python", "./hello.py" ]
