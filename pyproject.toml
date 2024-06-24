@@ -1,0 +1,51 @@
+[tool.ruff]
+
+# description of all rules are available on https://docs.astral.sh/ruff/rules/
+lint.select = ["D"]
+
+# we need to check 'mood' of all docstrings, this needs to be enabled explicitly
+lint.extend-select = ["D401"]
+
+lint.ignore = []
+
+target-version = "py311"
+lint.pydocstyle.convention = "google"
+line-length = 100
+
+[tool.coverage.report]
+# unit tests fails if the total coverage measurement is under this threshold value
+fail_under = 90
+
+[tool.mypy]
+disable_error_code = ["union-attr", "return-value", "arg-type", "import-untyped"]
+ignore_missing_imports = true
+plugins = ["pydantic.mypy"]
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+
+[tool.bandit]
+skips = ["B104"]
+exclude_dirs = ["tests", "scripts"]
+
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "black==24.4.2",
+]
+
+[project]
+name = "hello-python"
+version = "0.1.0"
+description = "Hello world, written in Python"
+authors = []
+dependencies = [
+    "pytest==8.2.2",
+]
+requires-python = "==3.11.*"
+readme = "README.md"
+license = "LICENSE"
