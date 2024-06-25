@@ -1,0 +1,11 @@
+kind: Pipeline
+apiVersion: tekton.dev/v1beta1
+metadata:
+  name: example-pipeline
+spec:
+  params:
+    - description: 'Snapshot of the application'
+      name: SNAPSHOT
+      default: '{"components": [{"name":"test-app", "containerImage": "quay.io/example/repo:latest"}]}'
+      type: string
+  tasks:
