@@ -33,9 +33,24 @@ spec:
           env:
           - name: SNAPSHOT
             value: $(params.SNAPSHOT)
+          - name: MY_SECRET
+            valueFrom:
+              secretKeyRef:
+                name: "a"
+                key: "b"
+          - name: MY_SECRET_2
+            valueFrom:
+              secretKeyRef:
+                name: "foo"
+                key: "bar"
           script: |
-            dnf -y install jq
+            dnf -y install jq python3-pip
+            pip3 install pytest
             echo -e "Example test task for the Snapshot:\n ${SNAPSHOT}"
+            env
+            ls -la
+            echo ${SNAPSHOT} | jq .
+            pytest -v
             // Run custom tests for the given Snapshot here
             // After the tests finish, record the overall result in the RESULT variable
             RESULT="SUCCESS"
