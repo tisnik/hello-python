@@ -39,7 +39,7 @@ spec:
             echo -e "Example test task for the Snapshot:\n ${SNAPSHOT}"
             env
             ls -la
-            jq . ${SNAPSHOT}
+            echo ${SNAPSHOT} | jq .
             pytest -v
             // Run custom tests for the given Snapshot here
             // After the tests finish, record the overall result in the RESULT variable
