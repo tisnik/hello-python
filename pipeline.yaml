@@ -44,7 +44,7 @@ spec:
                 name: "foo"
                 key: "bar"
           script: |
-            dnf -y install jq python3-pip
+            dnf -y install jq python3-pip tree
             pip3 install pytest
             echo -e "Example test task for the Snapshot:\n ${SNAPSHOT}"
             env
