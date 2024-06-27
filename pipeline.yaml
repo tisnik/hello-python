@@ -44,14 +44,14 @@ spec:
                 name: "foo"
                 key: "bar"
           script: |
-            dnf -y install jq python3-pip tree
+            dnf -y install jq python3-pip
             pip3 install pytest
             echo -e "Example test task for the Snapshot:\n ${SNAPSHOT}"
             env
             ls -la
             echo ${SNAPSHOT} | jq .
             echo "----------------------------"
-            tree
+            ls -R
             echo "----------------------------"
             RESULT="SUCCESS"
 
