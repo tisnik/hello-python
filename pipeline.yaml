@@ -50,9 +50,9 @@ spec:
             env
             ls -la
             echo ${SNAPSHOT} | jq .
-            echo "----------------------------"
-            ls -R
-            echo "----------------------------"
+            #echo "----------------------------"
+            #ls -R
+            #echo "----------------------------"
             RESULT="SUCCESS"
 
             TEST_OUTPUT=$(jq -rc --arg date $(date +%s) --arg RESULT "${RESULT}" --null-input \
