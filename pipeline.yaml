@@ -50,6 +50,15 @@ spec:
             env
             ls -la
             echo ${SNAPSHOT} | jq .
+
+            FIRST_IMAGE=$(echo ${SNAPSHOT} | jq -r '.components[] | select(.name=="hello-python") | .containerImage')
+            SECOND_IMAGE=$(echo ${SNAPSHOT} | jq -r '.components[] | select(.name=="hello-python-2") | .containerImage')
+
+            #echo "----------------------------"
+            echo "First image: ${FIRST_IMAGE}"
+            echo "Second image: ${SECOND_IMAGE}"
+            #echo "----------------------------"
+            #
             RESULT="SUCCESS"
 
             TEST_OUTPUT=$(jq -rc --arg date $(date +%s) --arg RESULT "${RESULT}" --null-input \
