@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9/python-39:1-192
+FROM registry.access.redhat.com/ubi9/python-39:1-192.1722518946
 
 # Set the working directory in the container
 WORKDIR /projects
